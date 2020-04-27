@@ -1,26 +1,44 @@
 {
   "name": "noodles-cli",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "description": "tools cli",
   "author": "geallenboy <gejialun88@163.com>",
-  "homepage": "",
-  "license": "ISC",
-  "main": "lib/noodles-cli.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
+  "main": "index.js",
+  "keywords": [
+    "webpack",
+    "react"
   ],
+  "bin": {
+    "noodles": "./bin/cli.js"
+  },
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": "node ./bin/cli.js init"
   },
-  "dependencies": {
-    "noodles-norm": "1.0.1"
+  "engines": {
+    "node": ">=6.0.0"
   },
+  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/noodles-cli#readme",
+  "bugs": {
+    "url": "https://github.com/geallenboy/noodles/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geallenboy/noodles"
+  },
+  "devDependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "conventional-changelog-cli": "^1.3.5",
+    "inquirer": "^7.0.6",
+    "ora": "^4.0.3",
+    "shelljs": "^0.8.3",
+    "webpack": "^4.42.0",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-merge": "^4.2.2"
+  },
+  "license": "ISC",
   "gitHead": "21e53cd6f489aef72ca10c5a40041d64e047186a"
 }
