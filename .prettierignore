@@ -1,0 +1,14 @@
+**/node_modules/**
+package.json
+
+
+
+# templates
+**/templates/**
+
+# docs
+**/*.md
+
+# coverage
+/coverage
+/dist
