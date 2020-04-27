@@ -1,0 +1,30 @@
+{
+  "name": "noodles",
+  "version": "1.0.0",
+  "description": "noodles tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "allen",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,wpy}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
