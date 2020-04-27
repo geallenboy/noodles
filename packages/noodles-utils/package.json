@@ -1,6 +1,6 @@
 {
   "name": "noodles-utils",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "tools",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -20,7 +20,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "noodles-norm": "1.0.1"
+    "noodles-norm": "1.0.2"
   },
-  "gitHead": "21e53cd6f489aef72ca10c5a40041d64e047186a"
+  "gitHead": "8dc0bb7eec7cd0377abf1ff9a0ae7f0f57b4aa88"
 }

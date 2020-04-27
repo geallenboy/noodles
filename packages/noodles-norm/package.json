@@ -1,6 +1,6 @@
 {
   "name": "noodles-norm",
-  "version": "1.0.1",
+  "version": "1.0.9",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -8,8 +8,6 @@
   "main": "lib/noodles-norm.js",
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "lint": "npm run build && cd example && npm run lint",
-    "prepublishOnly": "npm run build && npm test && np --no-cleanup --yolo --no-publish --any-branch",
     "test": "npm run build && cd example && npm run lint"
   },
   "directories": {
@@ -54,5 +52,5 @@
   "devDependencies": {
     "np": "^5.2.1"
   },
-  "gitHead": "21e53cd6f489aef72ca10c5a40041d64e047186a"
+  "gitHead": "8dc0bb7eec7cd0377abf1ff9a0ae7f0f57b4aa88"
 }
