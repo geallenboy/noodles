@@ -1,7 +1,7 @@
+#!/usr/bin/env node
+
 'use strict';
-
-module.exports = noodlesCli;
-
-function noodlesCli() {
-  // TODO
-}
+const { name, bin } = require('../package.json');
+console.log(name, bin);
+const Command = require('../lib/command');
+new Command().run();
