@@ -1,11 +1,11 @@
 {
   "name": "noodles-core",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "lib/noodles-core.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -19,5 +19,24 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "8dc0bb7eec7cd0377abf1ff9a0ae7f0f57b4aa88"
+  "gitHead": "5eb189aa4024d14ddc015ad316649d897aef3775",
+  "devDependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "detect-port": "^1.3.0",
+    "inquirer": "^7.1.0",
+    "opn": "^6.0.0",
+    "shelljs": "^0.8.4",
+    "webpack": "^4.43.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "http-proxy": "^1.18.0",
+    "http-proxy-middleware": "^1.0.3",
+    "kcors": "^2.2.2",
+    "koa": "^2.11.0",
+    "koa-connect": "^2.0.1",
+    "koa-webpack-hot-middleware": "^1.0.3"
+  }
 }

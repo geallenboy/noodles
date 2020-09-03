@@ -1,6 +1,6 @@
 {
   "name": "noodles-norm",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -52,5 +52,5 @@
   "devDependencies": {
     "np": "^5.2.1"
   },
-  "gitHead": "8dc0bb7eec7cd0377abf1ff9a0ae7f0f57b4aa88"
+  "gitHead": "5eb189aa4024d14ddc015ad316649d897aef3775"
 }
