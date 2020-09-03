@@ -1,6 +1,6 @@
 {
   "name": "noodles-server",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -19,5 +19,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "c1cc87534815c39e034be348bf1342378f210b53"
+  "gitHead": "4104b8b799284226e72b2bdae37ea5f643583237"
 }

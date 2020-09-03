@@ -1,6 +1,6 @@
 {
   "name": "noodles-cli",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "tools cli",
   "author": "geallenboy <gejialun88@163.com>",
   "main": "index.js",
@@ -29,16 +29,16 @@
     "url": "git+https://github.com/geallenboy/noodles"
   },
   "devDependencies": {
-    "chalk": "^4.0.0",
-    "commander": "^5.1.0",
-    "conventional-changelog-cli": "^1.3.5",
-    "inquirer": "^7.0.6",
-    "ora": "^4.0.3",
-    "shelljs": "^0.8.3",
-    "webpack": "^4.42.0",
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "conventional-changelog-cli": "^2.1.0",
+    "inquirer": "^7.3.3",
+    "ora": "^5.0.0",
+    "shelljs": "^0.8.4",
+    "webpack": "^4.44.1",
     "webpack-dev-middleware": "^3.7.2",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.1.3"
   },
   "license": "ISC",
-  "gitHead": "c1cc87534815c39e034be348bf1342378f210b53"
+  "gitHead": "4104b8b799284226e72b2bdae37ea5f643583237"
 }

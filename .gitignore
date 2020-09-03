@@ -1,6 +1,8 @@
-**/node_modules
+**node_modules
 /coverage
-/.nyc_output
+/packages/*/lib
+/packages/*/node_modules
+/packages/*/.local
+/.local
 /.changelog
-/dist
 .DS_Store
