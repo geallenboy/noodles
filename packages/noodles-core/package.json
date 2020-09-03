@@ -1,6 +1,6 @@
 {
   "name": "noodles-core",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -19,24 +19,24 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "c1cc87534815c39e034be348bf1342378f210b53",
+  "gitHead": "4104b8b799284226e72b2bdae37ea5f643583237",
   "devDependencies": {
-    "chalk": "^4.0.0",
-    "commander": "^5.1.0",
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
     "detect-port": "^1.3.0",
-    "inquirer": "^7.1.0",
+    "inquirer": "^7.3.3",
     "opn": "^6.0.0",
     "shelljs": "^0.8.4",
-    "webpack": "^4.43.0",
-    "webpack-merge": "^4.2.2"
+    "webpack": "^4.44.1",
+    "webpack-merge": "^5.1.3"
   },
   "dependencies": {
     "art-template": "^4.13.2",
-    "http-proxy": "^1.18.0",
-    "http-proxy-middleware": "^1.0.3",
+    "http-proxy": "^1.18.1",
+    "http-proxy-middleware": "^1.0.5",
     "kcors": "^2.2.2",
-    "koa": "^2.11.0",
-    "koa-connect": "^2.0.1",
+    "koa": "^2.13.0",
+    "koa-connect": "^2.1.0",
     "koa-webpack-hot-middleware": "^1.0.3"
   }
 }
