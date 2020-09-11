@@ -1,10 +1,10 @@
 {
   "name": "noodles-utils",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "webpack build",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/noodles-utils.js",
   "directories": {
     "lib": "lib",
@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "991124b5ea4953fe54613690844967fb2686c8ae",
+  "gitHead": "0d4746dc5d03cf059f33dd3cc308c2a8e77ee152",
   "devDependencies": {
     "node-http-server": "^8.1.2",
     "opn": "^6.0.0"

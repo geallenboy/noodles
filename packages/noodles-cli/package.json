@@ -1,6 +1,6 @@
 {
   "name": "noodles-cli",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "tools cli",
   "author": "geallenboy <gejialun88@163.com>",
   "main": "index.js",
@@ -39,6 +39,6 @@
     "webpack-dev-middleware": "^3.7.2",
     "webpack-merge": "^5.1.3"
   },
-  "license": "ISC",
-  "gitHead": "991124b5ea4953fe54613690844967fb2686c8ae"
+  "license": "MIT",
+  "gitHead": "0d4746dc5d03cf059f33dd3cc308c2a8e77ee152"
 }
