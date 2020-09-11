@@ -1,6 +1,6 @@
 {
   "name": "noodles-standard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "前端配置文件规范",
   "author": "geallenboy <gejialun88@163.com>",
   "keywords": [
@@ -35,14 +35,15 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
-    "eslint": "^7.8.1",
     "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
-    "vue-eslint-parser": "^7.1.0",
     "eslint-plugin-vue": "^6.2.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vue-eslint-parser": "^7.1.0"
   },
   "devDependencies": {
     "np": "^6.5.0"
-  }
+  },
+  "gitHead": "a2e86d634c9e4ed9635a35dc1fcdd245a6d6d5f6"
 }
