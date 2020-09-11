@@ -37,6 +37,7 @@
     "kcors": "^2.2.2",
     "koa": "^2.13.0",
     "koa-connect": "^2.1.0",
-    "koa-webpack-hot-middleware": "^1.0.3"
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "noodles-utils": "^0.0.1"
   }
 }

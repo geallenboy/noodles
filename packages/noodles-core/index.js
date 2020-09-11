@@ -1,4 +1,10 @@
 'use strict';
-exports.WebpackTool = require('./webpack/tool');
-exports.webpack = require('webpack');
-exports.merge = require('webpack-merge');
+const WebpackTool = require('webpack-tool');
+const { option } = require('commander');
+exports.WebpackTool = WebpackTool;
+exports.webpack = WebpackTool.webpack;
+exports.merge = WebpackTool.merge;
+
+exports.getConfig = (config={},option = {}) => {
+    return 
+}

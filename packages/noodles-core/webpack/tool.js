@@ -10,7 +10,7 @@ const historyMiddleware = require('../utils/history');
 const hotMiddleware = require('../utils/koa-webpack-hot-middleware');
 const devMiddleware = require('./dev');
 const proxyMiddleware = require('./proxy');
-const { nodeUtils, webpackUtils } = require('../../noodles-utils');
+const { nodeUtils, webpackUtils } = require('noodles-utils');
 const webpack = require('webpack');
 const Navigation = require('./nav');
 

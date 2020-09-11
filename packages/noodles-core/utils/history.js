@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const url = require('url');
+var url = require('url');
 
 function evaluateRewriteRule(parsedUrl, match, rule) {
   if (typeof rule === 'string') {
@@ -11,7 +11,7 @@ function evaluateRewriteRule(parsedUrl, match, rule) {
 
   return rule({
     parsedUrl: parsedUrl,
-    match: match,
+    match: match
   });
 }
 
@@ -25,74 +25,82 @@ function getLogger(options) {
   } else if (options && options.verbose) {
     return console.log.bind(console);
   }
-  return function () {};
+  return function(){};
 }
 
 module.exports = function koaFallbackApiMiddleware(options) {
   options = options || {};
-  let logger = getLogger(options);
+  var logger = getLogger(options);
 
-  return async function (ctx) {
-    let headers = ctx.headers,
-      reqUrl = ctx.url,
-      method = ctx.method;
+  return function * (next) {
+    var headers = this.headers,
+      reqUrl = this.url,
+      method = this.method;
 
-    if (ctx.method !== 'GET') {
-      await logger(
+    if (this.method !== 'GET') {
+      logger(
         'Not rewriting',
         method,
         reqUrl,
-        'because the method is not GET.',
+        'because the method is not GET.'
       );
+      yield * next;
     } else if (!headers || typeof headers.accept !== 'string') {
-      await logger(
+      logger(
         'Not rewriting',
         method,
         reqUrl,
-        'because the client did not send an HTTP accept header.',
+        'because the client did not send an HTTP accept header.'
       );
+      yield * next;
     } else if (headers.accept.indexOf('application/json') === 0) {
-      await logger(
+      logger(
         'Not rewriting',
         method,
         reqUrl,
-        'because the client prefers JSON.',
+        'because the client prefers JSON.'
       );
+      yield * next;
     } else if (!acceptsHtml(headers.accept)) {
-      await logger(
+      logger(
         'Not rewriting',
         method,
         reqUrl,
-        'because the client does not accept HTML.',
+        'because the client does not accept HTML.'
       );
+      yield * next;
     }
 
-    let parsedUrl = url.parse(reqUrl);
-    let rewriteTarget;
+    var parsedUrl = url.parse(reqUrl);
+    var rewriteTarget;
 
     options.rewrites = options.rewrites || [];
 
-    for (let i = 0; i < options.rewrites.length; i++) {
-      let rewrite = options.rewrites[i];
-      let match = parsedUrl.pathname.match(rewrite.from);
+    for (var i = 0; i < options.rewrites.length; i++) {
+      var rewrite = options.rewrites[i];
+      var match = parsedUrl.pathname.match(rewrite.from);
       if (match !== null) {
         rewriteTarget = evaluateRewriteRule(parsedUrl, match, rewrite.to);
-        await logger('Rewriting', method, reqUrl, 'to', rewriteTarget);
+        logger('Rewriting', method, reqUrl, 'to', rewriteTarget);
         this.url = rewriteTarget;
+        yield * next;
       }
     }
 
     if (parsedUrl.pathname.indexOf('.') !== -1) {
-      await logger(
+      logger(
         'Not rewriting',
         method,
         reqUrl,
-        'because the path includes a dot (.) character.',
+        'because the path includes a dot (.) character.'
       );
+      yield * next;
     }
 
     rewriteTarget = options.index || '/index.html';
-    await logger('Rewriting', method, reqUrl, 'to', rewriteTarget);
+    logger('Rewriting', method, reqUrl, 'to', rewriteTarget);
     this.url = rewriteTarget;
-  };
+
+    yield * next;
+  }
 };
