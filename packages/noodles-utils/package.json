@@ -1,6 +1,6 @@
 {
   "name": "noodles-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "webpack build",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "a2e86d634c9e4ed9635a35dc1fcdd245a6d6d5f6",
+  "gitHead": "66d84cd1d638815b7777d7715ea6380a8b0a437c",
   "devDependencies": {
     "node-http-server": "^8.1.2",
     "opn": "^6.0.0"

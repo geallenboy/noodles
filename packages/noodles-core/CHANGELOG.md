@@ -11,4 +11,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [0.0.2](https://github.com/geallenboy/noodles/compare/noodles-core@0.0.4...noodles-core@0.0.2) (2020-09-11)
+
+**Note:** Version bump only for package noodles-core
+
+
+
+
+
 **Note:** Version bump only for package noodles-core
