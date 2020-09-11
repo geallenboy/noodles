@@ -1,6 +1,6 @@
 {
   "name": "noodles-standard",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "前端配置文件规范",
   "author": "geallenboy <gejialun88@163.com>",
   "keywords": [
@@ -18,7 +18,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://registry.npm.taobao.org"
+    "registry": "http://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -45,5 +45,5 @@
   "devDependencies": {
     "np": "^6.5.0"
   },
-  "gitHead": "66d84cd1d638815b7777d7715ea6380a8b0a437c"
+  "gitHead": "991124b5ea4953fe54613690844967fb2686c8ae"
 }

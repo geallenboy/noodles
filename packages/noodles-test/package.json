@@ -1,6 +1,6 @@
 {
   "name": "noodles-test",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -19,5 +19,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "66d84cd1d638815b7777d7715ea6380a8b0a437c"
+  "gitHead": "991124b5ea4953fe54613690844967fb2686c8ae"
 }
