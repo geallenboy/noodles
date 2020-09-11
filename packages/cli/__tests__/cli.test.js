@@ -1,5 +1,5 @@
 'use strict';
 
-describe('noodles-cli', () => {
+describe('cli', () => {
   it('needs tests');
 });

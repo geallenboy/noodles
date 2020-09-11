@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "c4409f47adb0ec8441a987ad9516087fb0d54ae7",
+  "gitHead": "a48249e6337f1081397bee67b1246f4116db0749",
   "devDependencies": {
     "node-http-server": "^8.1.2",
     "opn": "^6.0.0"

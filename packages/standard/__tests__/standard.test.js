@@ -2,6 +2,6 @@
 
 const noodlesStandard = require('..');
 
-describe('noodles-standard', () => {
+describe('standard', () => {
     it('needs tests');
 });

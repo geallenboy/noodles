@@ -2,6 +2,6 @@
 
 const noodlesCore = require('..');
 
-describe('noodles-core', () => {
+describe('core', () => {
     it('needs tests');
 });

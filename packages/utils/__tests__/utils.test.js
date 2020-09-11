@@ -1,5 +1,5 @@
 'use strict';
 
-describe('noodles-utils', () => {
+describe('utils', () => {
   it('needs tests');
 });
