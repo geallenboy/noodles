@@ -1,6 +1,6 @@
 {
   "name": "noodles-standard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "前端配置文件规范",
   "author": "geallenboy <gejialun88@163.com>",
   "keywords": [
@@ -45,5 +45,5 @@
   "devDependencies": {
     "np": "^6.5.0"
   },
-  "gitHead": "0d4746dc5d03cf059f33dd3cc308c2a8e77ee152"
+  "gitHead": "c4409f47adb0ec8441a987ad9516087fb0d54ae7"
 }

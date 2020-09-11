@@ -1,6 +1,6 @@
 {
   "name": "noodles-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
   "homepage": "",
@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "0d4746dc5d03cf059f33dd3cc308c2a8e77ee152",
+  "gitHead": "c4409f47adb0ec8441a987ad9516087fb0d54ae7",
   "devDependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
