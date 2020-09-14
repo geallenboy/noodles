@@ -1,13 +1,14 @@
 {
   "name": "@noodles/standard",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "前端配置文件规范",
   "author": "geallenboy <gejialun88@163.com>",
   "keywords": [
     "eslint",
-    "prettier"
+    "prettier",
+    "stylelint"
   ],
-  "homepage": "https://github.com/geallenboy/noodles#readme",
+  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/standard#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "directories": {

@@ -1,4 +1,4 @@
-const prettier = require('./packages/noodles-standard/dist/prettier');
+const prettier = require("./packages/standard/dist/prettier");
 
 module.exports = {
   ...prettier.prettier,

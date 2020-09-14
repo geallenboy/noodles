@@ -12,7 +12,7 @@
 .DS_Store
 npm-debug.log*
 yarn-error.log
-
+.npmignore
 /coverage.
 .idea
 yarn.lock
