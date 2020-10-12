@@ -1,5 +1,6 @@
-const prettier = require("./packages/standard/dist/prettier");
-
 module.exports = {
-  ...prettier.prettier,
+  arrowParens: 'avoid',
+  trailingComma: 'es5',
+  singleQuote: true,
+  semi: true,
 };

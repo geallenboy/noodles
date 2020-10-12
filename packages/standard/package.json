@@ -3,35 +3,37 @@
   "version": "0.0.1",
   "description": "前端配置文件规范",
   "author": "geallenboy <gejialun88@163.com>",
+  "main": "index.js",
+  "types": "index.js",
   "keywords": [
     "eslint",
     "prettier",
     "stylelint"
   ],
-  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/standard#readme",
   "license": "MIT",
-  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
   },
+  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/standard",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geallenboy/noodles.git"
+    "url": "https://github.com/geallenboy/noodles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geallenboy/noodles/issues"
   },
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "lint": "npm run build && cd example && npm run lint",
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/geallenboy/noodles/issues"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.1.0",
@@ -45,6 +47,5 @@
   },
   "devDependencies": {
     "np": "^6.5.0"
-  },
-  "gitHead": "a48249e6337f1081397bee67b1246f4116db0749"
+  }
 }

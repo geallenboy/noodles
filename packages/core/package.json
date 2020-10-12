@@ -1,25 +1,29 @@
 {
   "name": "@noodles/core",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "description": "@noodles/core",
   "author": "geallenboy <gejialun88@163.com>",
-  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/core#readme",
   "license": "MIT",
   "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "types": "index.js",
   "files": [
     "lib"
   ],
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "a48249e6337f1081397bee67b1246f4116db0749",
+  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/core",
+  "bugs": {
+    "url": "https://github.com/geallenboy/noodles/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geallenboy/noodles"
+  },
   "devDependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",

@@ -1,25 +1,29 @@
 {
   "name": "@noodles/utils",
   "version": "0.0.1",
-  "description": "webpack build",
+  "description": "@noodles/utils",
   "author": "geallenboy <gejialun88@163.com>",
-  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/utils#readme",
-  "license": "MIT",
-  "main": "lib/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "main": "index.js",
+  "types": "index.js",
   "files": [
     "lib"
   ],
+  "license": "MIT",
   "publishConfig": {
-    "registry": "http://registry.npmjs.org/"
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "a48249e6337f1081397bee67b1246f4116db0749",
+  "homepage": "https://github.com/geallenboy/noodles/tree/master/packages/utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geallenboy/noodles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geallenboy/noodles/issues"
+  },
   "devDependencies": {
     "node-http-server": "^8.1.2",
     "opn": "^6.0.0"
