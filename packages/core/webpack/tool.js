@@ -4,16 +4,16 @@ const fs = require('fs');
 const koa = require('koa');
 const cors = require('kcors');
 const chalk = require('chalk');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const helper = require('../utils/helper');
 const historyMiddleware = require('../utils/history');
 const hotMiddleware = require('../utils/koa-webpack-hot-middleware');
 const devMiddleware = require('./dev');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 const proxyMiddleware = require('./proxy');
-const { nodeUtils, webpackUtils } = require('noodles-utils');
+const { nodeUtils, webpackUtils } = require('@noodles/utils');
 const webpack = require('webpack');
 const Navigation = require('./nav');
-
 class WebpackTool {
   constructor(config) {
     this.config = merge(
@@ -21,8 +21,9 @@ class WebpackTool {
         debugPort: 8888,
         hot: false,
       },
-      config,
+      config
     );
+    console.log(this.config, 7777);
     this.ready = false;
     this.cli = webpackUtils.getCli(this.config.cli);
     this.baseDir = this.config.baseDir || process.cwd();
@@ -38,20 +39,20 @@ class WebpackTool {
   green(msg, ex = '') {
     console.log(
       chalk.blueBright(`\r\n[${this.cli.name}] ${chalk.green(msg)}`),
-      ex,
+      ex
     );
   }
 
   red(msg, ex = '') {
     console.log(
       chalk.blueBright(`\r\n[${this.cli.name}] ${chalk.red(msg)}`),
-      ex,
+      ex
     );
   }
   //编译过程
   processCompilation(compilation) {
-    compilation.stats.forEach((stat) => {
-      stat.compilation.children = stat.compilation.children.filter((child) => {
+    compilation.stats.forEach(stat => {
+      stat.compilation.children = stat.compilation.children.filter(child => {
         return (
           !/html-webpack-plugin/.test(child.name) &&
           !/mini-css-extract-plugin/.test(child.name)
@@ -61,7 +62,7 @@ class WebpackTool {
   }
   //打印编译
   printCompilation(compilation) {
-    compilation.stats.forEach((stat) => {
+    compilation.stats.forEach(stat => {
       process.stdout.write(
         `${stat.toString(
           merge(
@@ -73,9 +74,9 @@ class WebpackTool {
               chunkModules: false,
               entrypoints: false,
             },
-            compilation.stat,
-          ),
-        )}\n`,
+            stat
+          )
+        )}\n`
       );
     });
   }
@@ -99,7 +100,7 @@ class WebpackTool {
   }
 
   compilerHook(compiler, callback) {
-    compiler.hooks.done.tap('webpack-tool-build-done', (compilation) => {
+    compiler.hooks.done.tap('webpack-tool-build-done', compilation => {
       callback(compilation);
     });
   }
@@ -111,7 +112,7 @@ class WebpackTool {
       (compiler, compilation, webpackConfigItem) => {
         callback && callback(compiler, compilation, webpackConfigItem);
         const htmls = Object.keys(compilation.compilation.assets)
-          .filter((url) => {
+          .filter(url => {
             return /\.(html|htm)$/.test(url);
           })
           .sort();
@@ -127,19 +128,20 @@ class WebpackTool {
         } else {
           this.createDebugServer(compiler, compilation);
         }
-      },
+      }
     );
   }
 
-  dev(webpackConfig, options, callback) {
+  dev(webpackConfig, callback) {
     let readyCount = 0;
     const compilers = [];
     const webpackConfigList = this.normalizeWebpackConfig(webpackConfig);
     webpackConfigList.forEach((webpackConfigItem, index) => {
+      console.log(webpackConfigItem, 2323);
       this.normalizeHotEntry(webpackConfigItem);
       const compiler = webpack(webpackConfigItem);
       this.createWebpackServer(compiler, { offset: index });
-      this.compilerHook(compiler, (compilation) => {
+      this.compilerHook(compiler, compilation => {
         readyCount++;
         if (!this.ready && readyCount % webpackConfigList.length === 0) {
           this.ready = true;
@@ -151,7 +153,7 @@ class WebpackTool {
     return compilers;
   }
 
-  build(webpackConfig, options, callback) {
+  build(webpackConfig, callback) {
     const webpackConfigList = this.normalizeWebpackConfig(webpackConfig);
     const compiler = webpack(webpackConfigList, (err, compilation) => {
       if (err || (compilation && compilation.hasErrors())) {
@@ -161,7 +163,7 @@ class WebpackTool {
         process.exit(1);
       }
     });
-    this.compilerHook(compiler, (compilation) => {
+    this.compilerHook(compiler, compilation => {
       this.processCompilation(compilation);
       this.printCompilation(compilation);
       callback && callback(compiler, compilation);
@@ -172,17 +174,17 @@ class WebpackTool {
   createDebugServer(compiler, stats) {
     const config = this.config;
     const app = new koa();
-
     app.use(cors());
 
-    app.use(async function (res) {
-      if (res.url === '/debug') {
-        res.body = await new Navigation(config, compiler, stats).create();
+    app.use(async (ctx, next) => {
+      if (ctx.url === '/debug') {
+        ctx.body = await new Navigation(config, compiler, stats).create();
       } else {
+        await next();
       }
     });
     let port = nodeUtils.getPort(this.config.debugPort);
-    app.listen(port, (err) => {
+    app.listen(port, err => {
       if (!err) {
         const devServer = this.devServer || {};
         const url = nodeUtils.getBrowserUrl(port, 'debug');
@@ -195,29 +197,14 @@ class WebpackTool {
         this.green(`start webpack build navigation ui view: ${url}`);
       }
     });
-    nodeUtils.getPort(this.config.debugPort).then((port) => {
-      console.log(port, 100000);
-      app.listen(port, (err) => {
-        if (!err) {
-          const devServer = this.devServer || {};
-          const url = nodeUtils.getBrowserUrl(port, 'debug');
-          if (devServer.open) {
-            nodeUtils.open(url);
-          }
-          if (devServer.openPage) {
-            nodeUtils.open(devServer.openPage);
-          }
-          this.green(`start webpack build navigation ui view: ${url}`);
-        }
-      });
-    });
+
     return app;
   }
   normalizeWebpackConfig(webpackConfig) {
     const webpackConfigList = Array.isArray(webpackConfig)
       ? webpackConfig
       : [webpackConfig];
-    webpackConfigList.forEach((item) => {
+    webpackConfigList.forEach(item => {
       if (item.devServer) {
         this.devServer = item.devServer;
         delete item.devServer;
@@ -228,7 +215,7 @@ class WebpackTool {
 
   createWebpackCompiler(webpackConfig, callback) {
     const compiler = webpack(webpackConfig);
-    compiler.hooks.done.tap('webpack-tool-build-done', (compilation) => {
+    compiler.hooks.done.tap('webpack-tool-build-done', compilation => {
       callback && callback(compiler, compilation);
     });
     return compiler;
@@ -259,10 +246,10 @@ class WebpackTool {
         stats,
         watchOptions,
       },
-      devServer,
+      devServer
     );
   }
-
+  //创建服务
   createWebpackServer(compiler, options = {}) {
     const offset = options.offset;
     const webpackConfig = compiler.options;
@@ -278,14 +265,14 @@ class WebpackTool {
 
     app.use(cors());
 
-    // only web use hot middleware
     if (target === 'web' || target === undefined) {
       // http-proxy
-      Object.keys(proxy).forEach((key) => {
+      Object.keys(proxy).forEach(key => {
         app.use(proxyMiddleware(key, proxy[key]));
       });
       const historyOptions =
         historyApiFallback === true ? {} : historyApiFallback;
+
       app.use(historyMiddleware(historyOptions));
       app.use(hotMiddleware(compiler, { log: false, reload: true }));
     }
@@ -298,7 +285,7 @@ class WebpackTool {
     }
 
     const port = (this.config.port = this.getPort(target, offset));
-    app.listen(port, (err) => {
+    app.listen(port, err => {
       if (!err) {
         const url = nodeUtils.getHost(port);
         if (target) {

@@ -3,18 +3,18 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 const assert = require('assert');
-const nodeUtils = require('../../noodles-utils/lib/nodeUtils');
-const merge = require('webpack-merge');
+const { nodeUtils } = require('@noodles/utils');
+const { merge } = require('webpack-merge');
 
 exports.getCompileTemDir = (project, filename = '') => {
   return path.join(os.tmpdir(), 'noodles', project, filename);
 };
 
-exports.getInfoFilePath = (project) => {
+exports.getInfoFilePath = project => {
   return this.getCompileTemDir(project, 'noodles.json');
 };
 
-exports.getInfo = (project) => {
+exports.getInfo = project => {
   if (!project) {
     const pkgfile = path.join(process.cwd(), 'package.json');
     const pkg = require(pkgfile);
@@ -27,11 +27,11 @@ exports.getInfo = (project) => {
   return {};
 };
 
-exports.setInfo = (json, clear = false) => {
+exports.setInfo = async (json, clear = false) => {
   const pkgfile = path.join(process.cwd(), 'package.json');
   const pkg = require(pkgfile);
   const project = pkg.package || pkg.name;
-  console.log(pkgfile, process.cwd(), 333, project);
+
   assert(project, 'package.json file missing name config');
   const filepath = this.getInfoFilePath(project);
   if (clear) {

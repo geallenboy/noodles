@@ -2,12 +2,12 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 function middleware(doIt, req, res) {
   let originalEnd = res.end;
-  return function (done) {
-    res.end = function () {
+  return done => {
+    res.end = () => {
       originalEnd.apply(this, arguments);
       done(null, 0);
     };
-    doIt(req, res, function () {
+    doIt(req, res, () => {
       done(null, 1);
     });
   };
@@ -15,7 +15,10 @@ function middleware(doIt, req, res) {
 
 module.exports = function (compiler, option) {
   let action = webpackHotMiddleware(compiler, option);
-  return async function (ctx) {
-    await middleware(action, ctx.req, ctx.res);
+  return async (ctx, next) => {
+    let nextStep = await middleware(action, ctx.req, ctx.res);
+    if (nextStep && next) {
+      await next();
+    }
   };
 };

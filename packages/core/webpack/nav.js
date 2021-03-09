@@ -1,7 +1,7 @@
 'use strict';
 const artTemplate = require('art-template');
 const helper = require('../utils/helper');
-const nodeUtils = require('../../noodles-utils/lib/nodeUtils');
+const { nodeUtils } = require('@noodles/utils');
 
 class Navgation {
   constructor(config, compiler, stat) {
@@ -28,12 +28,12 @@ class Navgation {
 
   filterFile(files, htmls) {
     if (htmls.length) {
-      return htmls.sort().filter((url) => {
+      return htmls.sort().filter(url => {
         return /\.(html|htm|tpl)$/.test(url);
       });
     }
     return files
-      .filter((filename) => {
+      .filter(filename => {
         return (
           !/\.hot-update\.(js|json)$/.test(filename) && /\.js$/.test(filename)
         );
@@ -44,16 +44,16 @@ class Navgation {
   resolve() {
     const webpackConfig = this.compiler.options;
     const info = helper.getInfo();
-    console.log(info, 44);
+    console.log(this.compiler, 144);
     const target = webpackConfig.target || 'web';
     const port = info[target].port || this.config.port - 1;
     const publicPath = this.normalizePublicPath(
       webpackConfig.output.publicPath,
-      port,
+      port
     );
     const assets = Object.keys(this.stat.compilation.assets)
       .sort()
-      .map((name) => {
+      .map(name => {
         const url =
           publicPath.replace(/\/$/, '') + '/' + name.replace(/^\//, '');
         return {
@@ -62,10 +62,10 @@ class Navgation {
         };
       });
     const name = this.getName();
-    const html = assets.filter((item) => {
+    const html = assets.filter(item => {
       return /\.(html|htm|tpl)$/.test(item.name);
     });
-    const js = assets.filter((item) => {
+    const js = assets.filter(item => {
       return (
         !/\.hot-update\.(js|json)$/.test(item.name) && /\.js$/.test(item.name)
       );

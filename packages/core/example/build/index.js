@@ -1,14 +1,16 @@
 //build/index.js
-const WebpackTool = require('../../webpack/tool');
+const { WebpackTool } = require('@noodles/core');
 // const WebpackTool = require('webpack-tool');
 const NODE_ENV = process.env.VIEW;
-console.log(WebpackTool, 33);
+// console.log(WebpackTool, 33);
 const webpackTool = new WebpackTool({
   devServer: {
-    before: (before) => {
+    before: before => {
       // register koa middleware
+      console.log('before');
     },
-    after: (app) => {
+    after: app => {
+      console.log('after');
       // register koa middleware
     },
     proxy: {
@@ -27,10 +29,10 @@ const webpackConfig = {
   entry: {
     index: './src/index.js',
   },
-  output: {
-    publicPath: 'dist',
-  },
-  mode: 'production',
+  // output: {
+  //   publicPath: 'dist',
+  // },
+  mode: 'development',
   module: {
     rules: [],
   },
@@ -44,4 +46,5 @@ const webpackConfig = {
 //   // if you want to show build result ui view for build mode, please set  process.env.BUILD_VIEW=true
 //   webpackTool.build(webpackConfig);
 // }
-webpackTool.build(webpackConfig);
+// console.log(webpackTool.getPort());
+webpackTool.server(webpackConfig);
