@@ -14,7 +14,7 @@
     "node"
   ],
   "bin": {
-    "noodles": "bin/cli.js"
+    "noodles": "./bin/cli.js"
   },
   "publishConfig": {
     "registry": "http://registry.npmjs.org/",

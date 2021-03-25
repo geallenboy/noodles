@@ -33,12 +33,12 @@ module.exports = class Command {
       .command('init')
       .option(
         '-r, --registry [url]',
-        'npm registry, default https://registry.npmjs.org, you can taobao registry: https://registry.npm.taobao.org',
+        'npm registry, default https://registry.npmjs.org, you can taobao registry: https://registry.npm.taobao.org'
       )
       .description('初始化webpack配置,react的样板文件')
-      .action((options) => {
-        console.log('初始化');
-        this.boilerplate.init(options);
+      .action(options => {
+        console.log('初始化', options);
+        // this.boilerplate.init(options);
       });
   }
   install() {
@@ -46,7 +46,7 @@ module.exports = class Command {
       .command('install')
       .option('--mode [mode]', 'mode: npm,yarn')
       .description('动态安装webpack缺少npm模块')
-      .action((options) => {
+      .action(options => {
         console.log(options);
       });
   }
@@ -54,7 +54,7 @@ module.exports = class Command {
     this.program
       .command('dev [env]')
       .description('启动webpack dev服务器以进行开发模式')
-      .action((options) => {
+      .action(options => {
         console.log(options);
       });
   }
@@ -62,7 +62,7 @@ module.exports = class Command {
     this.program
       .command('test')
       .description('单元测')
-      .action((options) => {
+      .action(options => {
         console.log('test', options);
       });
   }
@@ -70,7 +70,7 @@ module.exports = class Command {
     this.program
       .command('start [env]')
       .description('启动webpack dev服务器以进行开发模式')
-      .action((options) => {
+      .action(options => {
         console.log('start', options);
       });
   }
@@ -82,7 +82,7 @@ module.exports = class Command {
       .option('--server [port]', '启动http服务器')
       .option('--speed', '统计webpack构件速度')
       .description('打包编译')
-      .action((options) => {
+      .action(options => {
         console.log(options);
       });
   }
@@ -93,12 +93,12 @@ module.exports = class Command {
       .option('-d, --dist [dist]', 'http服务器文件目录')
       .option('-i, --index [index]', 'http服务器html索引文件名')
       .description('静态文件web http服务器')
-      .action((options) => {
+      .action(options => {
         console.log(options);
       });
   }
   command() {
-    this.commands.forEach((cmd) => {
+    this.commands.forEach(cmd => {
       if (this[cmd]) {
         this[cmd].apply(this);
       } else {
