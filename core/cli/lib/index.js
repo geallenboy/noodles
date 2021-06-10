@@ -5,7 +5,7 @@ const semver = require('semver');
 const colors = require('colors/safe');
 const userHome = require('user-home');
 const pathExists = require('path-exists');
-const log = require('@noodles/log');
+const log = require('@noodlespro/log');
 const pkg = require('../package.json');
 const constant = require('./const');
 

@@ -1,9 +1,9 @@
 {
-  "name": "@noodles/help",
+  "name": "@noodlespro/help",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
-  "homepage": "https://github.com/geallenboy/noodles#readme",
+  "homepage": "https://github.com/geallenboy/noodlespro#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geallenboy/noodles.git"
+    "url": "git+https://github.com/geallenboy/noodlespro.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/geallenboy/noodles/issues"
+    "url": "https://github.com/geallenboy/noodlespro/issues"
   }
 }

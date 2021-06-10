@@ -1,9 +1,9 @@
 {
-  "name": "@noodles/cli",
+  "name": "@noodlespro/cli",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
-  "homepage": "https://github.com/geallenboy/noodles#readme",
+  "homepage": "https://github.com/geallenboy/noodlespro#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
@@ -11,7 +11,7 @@
     "test": "__tests__"
   },
   "bin": {
-    "noodles": "bin/index.js"
+    "noodlespro": "bin/index.js"
   },
   "files": [
     "lib"
@@ -21,17 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geallenboy/noodles.git"
+    "url": "git+https://github.com/geallenboy/noodlespro.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/geallenboy/noodles/issues"
+    "url": "https://github.com/geallenboy/noodlespro/issues"
   },
   "dependencies": {
-    "@noodles/help": "file:../../utils/help",
-    "@noodles/log": "file:../../utils/log",
+    "@noodlespro/help": "file:../../utils/help",
+    "@noodlespro/log": "file:../../utils/log",
     "colors": "^1.4.0",
     "import-local": "^3.0.2",
     "npmlog": "^4.1.2",
