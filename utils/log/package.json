@@ -1,0 +1,32 @@
+{
+  "name": "@noodles/log",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "geallenboy <gejialun88@163.com>",
+  "homepage": "https://github.com/geallenboy/noodles#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geallenboy/noodles.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/geallenboy/noodles/issues"
+  },
+  "dependencies": {
+    "npmlog": "^4.1.2"
+  }
+}
