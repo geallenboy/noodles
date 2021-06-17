@@ -11,7 +11,7 @@ const pkg = require('../package.json');
 
 const constant = require('./const');
 
-function core() {
+async function core() {
   log.success('test', 'success...');
   log.verbose('debug', 'debug...');
   try {
@@ -21,6 +21,7 @@ function core() {
     checkUserHome();
     checkInputArgs();
     checkEnv();
+    await checkGloalUpdate();
     log.verbose('debug', 'test debug log');
   } catch (error) {
     log.error(error.message);
@@ -30,7 +31,7 @@ function core() {
 function checkInputArgs() {
   const minimist = require('minimist');
   const argv = minimist(process.argv.slice(2));
-  console.log(argv);
+
   if (argv.debug) {
     process.env.LOG_LEVEL = 'verbose';
   } else {
@@ -58,7 +59,6 @@ function checkNodeVersion() {
 function checkRoot() {
   const rootCheck = require('root-check');
   rootCheck();
-  console.log(process.geteuid());
 }
 
 function checkUserHome() {
@@ -86,5 +86,27 @@ function checkEnv() {
     cliConfig['cliHome'] = path.join(userHome, constant.DEFAULT_CLI_HOME);
   }
   process.env.CLI_HOME_PATH = cliConfig.cliHome;
-  log.verbose('环境变量', process.env.CLI_HOME_PATH);
+  log.verbose('环境变量', process.env.USER, process.env.CLI_HOME_PATH);
+}
+
+async function checkGloalUpdate() {
+  //1.获取当前的版本号和模块名
+  const currentVersion = pkg.version;
+  const npmName = pkg.name;
+  //2.调用npm api 获取所有版本号
+  const { getNpmSemverVersion } = require('@noodlespro/npm-info');
+  const lastVersion = await getNpmSemverVersion('1.0.5', npmName);
+  console.log(lastVersion);
+  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
+    log.warn(
+      colors.yellow(
+        '更新提示',
+        `请手动更新${npmName}，当前版本：${currentVersion},最新版本：${lastVersion}
+  更新命令：npm install -g ${npmName}`
+      )
+    );
+  }
+  //3.提取所有的版本号，比对哪些版本号是大于当前版本号
+
+  //4.获取最新的版本号，提示用户更新到该版本
 }
