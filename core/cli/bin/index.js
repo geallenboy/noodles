@@ -1,9 +1,19 @@
 #! /usr/bin/env node
-const help = require('@noodlespro/help');
-const importLocal = require('import-local');
+//
+// import pkg from '../package.json';
 
-if (importLocal(__filename)) {
-  require('npmlog').info('cli', '正在使用 noodlespro 本地版本');
-} else {
-  require('../lib')(process.argv.slice(2));
-}
+// const importLocal = require('import-local');
+require('../dist/core');
+
+// require('../lib')(process.argv.slice(2));
+
+//如何让NODE支持ES module
+//模块化
+//CMD/AMD/require.js
+
+//Commonjs
+//加载:require()
+//module.exports/exports.x
+
+//ES Module
+//import

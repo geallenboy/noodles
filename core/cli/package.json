@@ -24,7 +24,9 @@
     "url": "git+https://github.com/geallenboy/noodlespro.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack -w"
   },
   "bugs": {
     "url": "https://github.com/geallenboy/noodlespro/issues"
@@ -34,6 +36,7 @@
     "@noodlespro/log": "file:../../utils/log",
     "@noodlespro/npm-info": "file:../../utils/npm-info",
     "colors": "^1.4.0",
+    "commander": "^7.2.0",
     "dotenv": "^10.0.0",
     "import-local": "^3.0.2",
     "minimist": "^1.2.5",
@@ -41,6 +44,10 @@
     "path-exists": "^4.0.0",
     "root-check": "^1.0.0",
     "semver": "^7.3.5",
-    "user-home": "^3.0.0"
+    "user-home": "^3.0.0",
+    "webpack": "^5.39.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.7.2"
   }
 }
