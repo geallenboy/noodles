@@ -1,5 +1,5 @@
 {
-  "name": "@noodlespro/cli",
+  "name": "@noodlespro/exec",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "geallenboy <gejialun88@163.com>",
@@ -9,9 +9,6 @@
   "directories": {
     "lib": "lib",
     "test": "__tests__"
-  },
-  "bin": {
-    "noodlespro": "bin/index.js"
   },
   "files": [
     "lib"
@@ -24,28 +21,14 @@
     "url": "git+https://github.com/geallenboy/noodlespro.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "webpack",
-    "dev": "webpack -w"
+    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/geallenboy/noodlespro/issues"
   },
   "dependencies": {
-    "@noodlespro/help": "file:../../utils/help",
+    "@noodlespro/package": "file:../../models/package",
     "@noodlespro/log": "file:../../utils/log",
-    "@noodlespro/init": "file:../../commands/init",
-    "@noodlespro/npm-info": "file:../../utils/npm-info",
-    "@noodlespro/exec": "file:../../core/exec",
-    "babel-loader": "^8.2.2",
-    "colors": "^1.4.0",
-    "commander": "^7.2.0",
-    "dotenv": "^10.0.0",
-    "import-local": "^3.0.2",
-    "npmlog": "^4.1.2",
-    "path-exists": "^4.0.0",
-    "root-check": "^1.0.0",
-    "semver": "^7.3.5",
-    "user-home": "^3.0.0"
+    "@noodlespro/help": "file:../../utils/help"
   }
 }

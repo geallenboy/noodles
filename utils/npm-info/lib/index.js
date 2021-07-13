@@ -11,8 +11,7 @@ function getNpmInfo(npmName, registry) {
   }
   const registryUrl = registry || getDefaultRegistry();
   const npmInfoUrl = urlJoin(registryUrl, '@imooc-cli/core');
-  //@imooc-cli/core
-  console.log(npmInfoUrl);
+
   return axios
     .get(npmInfoUrl)
     .then(response => {
@@ -64,8 +63,18 @@ async function getNpmSemverVersion(baseVersion, npmName, registry) {
   }
 }
 
+async function getNpmLatestVersion(npmName, registry) {
+  const versions = await getNpmVersions(npmName, registry);
+  if (versions) {
+    return versions.sort((a, b) => semver.gt(b, a))[0];
+  }
+  return null;
+}
+
 module.exports = {
   getNpmInfo,
   getNpmVersions,
   getNpmSemverVersion,
+  getDefaultRegistry,
+  getNpmLatestVersion,
 };

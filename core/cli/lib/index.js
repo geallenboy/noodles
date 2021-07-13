@@ -1,59 +1,40 @@
 'use strict';
 
-module.exports = core;
 const path = require('path');
 const semver = require('semver');
 const colors = require('colors/safe');
 const userHome = require('user-home');
 const pathExists = require('path-exists');
 const log = require('@noodlespro/log');
-const pkg = require('../package.json');
 
+const pkg = require('../package.json');
 const constant = require('./const');
+const { Command } = require('commander');
+const exec = require('@noodlespro/exec');
+
+const program = new Command();
 
 async function core() {
   log.success('test', 'success...');
   log.verbose('debug', 'debug...');
   try {
-    checkPkgVersion();
-    checkNodeVersion();
-    checkRoot();
-    checkUserHome();
-    checkInputArgs();
-    checkEnv();
-    await checkGloalUpdate();
-    log.verbose('debug', 'test debug log');
+    await prepare();
+    registerCommand();
   } catch (error) {
     log.error(error.message);
   }
 }
 
-function checkInputArgs() {
-  const minimist = require('minimist');
-  const argv = minimist(process.argv.slice(2));
-
-  if (argv.debug) {
-    process.env.LOG_LEVEL = 'verbose';
-  } else {
-    process.env.LOG_LEVEL = 'info';
-  }
-  log.level = process.env.LOG_LEVEL;
+async function prepare() {
+  checkPkgVersion();
+  checkRoot();
+  checkUserHome();
+  checkEnv();
+  await checkGloalUpdate();
 }
 
 function checkPkgVersion() {
   log.notice('cli', pkg.version);
-}
-
-function checkNodeVersion() {
-  //1.获取当前node版本号
-  const currentVersion = process.version;
-  //2.比较node最低版本号
-  const lowestVersion = constant.LOWEST_NODE_VERSION;
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(
-      colors.red(`noodles 需要安装 v${lowestVersion} 以上版本的 Node`)
-    );
-  }
 }
 
 function checkRoot() {
@@ -65,7 +46,6 @@ function checkUserHome() {
   if (!userHome || !pathExists(userHome)) {
     throw new Error(colors.red(`当前登陆用户主目录不存在！`));
   }
-  console.log(userHome);
 }
 
 function checkEnv() {
@@ -95,9 +75,9 @@ async function checkGloalUpdate() {
   const npmName = pkg.name;
   //2.调用npm api 获取所有版本号
   const { getNpmSemverVersion } = require('@noodlespro/npm-info');
-  const lastVersion = await getNpmSemverVersion('1.0.5', npmName);
-  console.log(lastVersion);
-  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
+  const lastVersion = await getNpmSemverVersion(currentVersion, npmName);
+
+  if (lastVersion && semver.gt(currentVersion, lastVersion)) {
     log.warn(
       colors.yellow(
         '更新提示',
@@ -110,3 +90,51 @@ async function checkGloalUpdate() {
 
   //4.获取最新的版本号，提示用户更新到该版本
 }
+
+function registerCommand() {
+  program
+    .name(Object.keys(pkg.bin)[0])
+    .usage('<command> [options]')
+    .version(pkg.version)
+    .option('-d, --debug', '是否开启调试模式', false)
+    .option('-t, --targetPath <targetPath>', '是否开启本地调试文件路径', '');
+
+  program
+    .command('init [projectName]')
+    .option('-f, --force', '是否强制初始化项目')
+    .action(exec);
+
+  //开启debug模式
+  program.on('option:debug', function () {
+    const options = program.opts();
+    if (options.debug) {
+      process.env.LOG_LEVEL = 'verbose';
+    } else {
+      process.env.LOG_LEVEL = 'info';
+    }
+    log.level = process.env.LOG_LEVEL;
+    log.verbose('test');
+  });
+
+  //指定targetPath
+  program.on('option:targetPath', function () {
+    process.env.CLI_TARGET_PATH = program.opts().targetPath;
+  });
+
+  //对未知命令监听
+  program.on('command:*', function (obj) {
+    const availableCommands = program.commands.map(cmd => cmd.name());
+    console.log(colors.red('未知的命令' + obj[0]));
+    if (availableCommands.length > 0) {
+      console.log(colors.red('可用命令' + availableCommands.join(',')));
+    }
+  });
+
+  if (program._args && program._args < 1) {
+    program.outputHelp();
+  }
+
+  program.parse(process.argv);
+}
+
+module.exports = core;

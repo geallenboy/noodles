@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = help;
-
-function help() {
-  console.log('help');
+function isObject(o) {
+  return Object.prototype.toString.call(o) === '[object object]';
 }
+
+module.exports = { isObject };

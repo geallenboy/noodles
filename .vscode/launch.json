@@ -7,9 +7,10 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "node",
-      "cwd": "${workspaceRoot}/packages/noodles-core/example/",
-      "program": "${workspaceFolder}/packages/noodles-core/example/build/index.js"
+      "name": "noodlespro",
+      "cwd":"${workspaceFolder}",
+      "program": "${workspaceFolder}/core/cli/bin/index.js",
+      "args":["init","names","--force"]
     }
   ]
 }
